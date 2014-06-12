@@ -15,9 +15,18 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-
+require "rspec/rails"
+require "rspec"
+require "rails/all"
+require "rspec/autorun"
+require "active_support"
+require "active_support/core_ext"
+require "spec/rails"
 RSpec.configure do |config|
-
+	config.fixture_path = "#{::Rails.root}/spec/fixtures"
+	Config.use_transactional_fixtures = true 
+	config.infer_base_class_for_anonymous_controllers = false 
+	config.order = "random"
   config.include Capybara::DSL 
 
 end
